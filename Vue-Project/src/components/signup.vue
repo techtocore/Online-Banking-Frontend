@@ -3,6 +3,8 @@
     <div class="col-4"></div>
     <div class="col-4">
       <br>
+      <br>
+      <br>
       <h1>Signup</h1>
       <br>
       <form v-on:submit.prevent="signup" style="overflow:auto">
@@ -113,7 +115,7 @@ export default {
               name: this.name,
               address: this.address,
               govt_id: this.govid,
-              govt_id_type: "Meh..."
+              govt_id_type: "Aadhar"
             },
             {
               emulateJSON: true

@@ -4,6 +4,8 @@
     <div class="hello" v-show="!currentComponent">
       <br>
       <br>
+      <br>
+      <br>
       <h1>{{ msg }}</h1>
       <br>
       <br>

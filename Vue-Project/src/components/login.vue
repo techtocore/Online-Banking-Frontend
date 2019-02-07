@@ -4,6 +4,8 @@
     <div class="col-4">
       <br>
       <br>
+      <br>
+      <br>
       <h1>Login</h1>
       <br>
       <form v-on:submit.prevent="login">
@@ -24,7 +26,7 @@
             class="form-control"
             type="password"
             name="password"
-            v-validate="{ required:true,min:8}"
+            v-validate="{ required:true}"
             placeholder="Password"
             v-model="password"
           >

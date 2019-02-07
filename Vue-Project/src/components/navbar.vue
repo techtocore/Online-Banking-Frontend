@@ -1,6 +1,7 @@
 <template>
   <section class="header">
-    <nav class="navbar navbar-static-top navbar-expand-md navbar-dark bg-dark">
+    <nav class="navbar fixed-top navbar-static-top navbar-expand-md navbar-dark bg-dark">
+      <img src="/logo.png" width="4%">
       <a href="/" class="navbar-brand" style="padding-left:15px;">PBS</a>
       <button
         class="navbar-toggler"
@@ -21,7 +22,7 @@
             <a class="nav-link" href="#">Contact Us</a>
           </li>
           <li class="nav-item" v-if="this.$session.exists()">
-            <a class="nav-link" v-on:click="logout">Logout</a>
+            <a class="nav-link" v-on:click="logout" href="#">Logout</a>
           </li>
         </ul>
       </div>
