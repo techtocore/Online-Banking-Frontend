@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <HelloWorld msg="Petronas Banking Services"/>
+    <HelloWorld msg="Patronus Banking Services"/>
   </div>
 </template>
 

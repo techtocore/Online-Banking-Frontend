@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div :is="currentComponent"></div>
+    <div :is="currentComponent" style="overflow:auto;"></div>
     <div class="hello" v-show="!currentComponent">
       <br>
       <br>
@@ -8,7 +8,7 @@
       <br>
       <br>
       <center>
-        <button class="btn btn-primary">Signup</button>
+        <button @click="swapComponent('signup')" class="btn btn-primary">Signup</button>
         <br>
         <br>
         <br>
@@ -20,6 +20,7 @@
 
 <script>
 import login from "./login.vue";
+import signup from "./signup.vue";
 
 export default {
   name: "app",
@@ -32,7 +33,8 @@ export default {
     };
   },
   components: {
-    login: login
+    login: login,
+    signup: signup
   },
   methods: {
     swapComponent: function(component) {

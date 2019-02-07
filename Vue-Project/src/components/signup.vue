@@ -3,10 +3,20 @@
     <div class="col-4"></div>
     <div class="col-4">
       <br>
+      <h1>Signup</h1>
       <br>
-      <h1>Login</h1>
-      <br>
-      <form v-on:submit.prevent="login">
+      <form v-on:submit.prevent="signup" style="overflow:auto">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            class="form-control"
+            name="name"
+            v-validate="{ required:true}"
+            placeholder="Name"
+            v-model="name"
+          >
+        </div>
         <div class="form-group">
           <label for="email">Email address:</label>
           <input
@@ -29,9 +39,36 @@
             v-model="password"
           >
         </div>
+        <div class="form-group">
+          <label for="govid">Govt ID:</label>
+          <input
+            type="text"
+            class="form-control"
+            name="govid"
+            v-validate="{ required:true}"
+            placeholder="ID Number"
+            v-model="govid"
+          >
+        </div>
+        <div class="form-group">
+          <label for="address">Address:</label>
+          <input
+            type="address"
+            class="form-control"
+            name="address"
+            v-validate="{ required:true}"
+            placeholder="Address"
+            v-model="address"
+          >
+        </div>
         <br>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
     </div>
     <div class="col-4"></div>
     <modal name="notifyLog" :height="'auto'" @closed="clearMsg">
@@ -52,11 +89,14 @@ export default {
     return {
       email: "",
       password: "",
-      msg: ""
+      msg: "",
+      name: "",
+      address: "",
+      govid: ""
     };
   },
   methods: {
-    login: function() {
+    signup: function() {
       if (this.errors.has("email") || !this.fields.email.dirty) {
         this.msg = "Enter a valid email";
         this.$modal.show("notifyLog");
@@ -66,10 +106,14 @@ export default {
       } else {
         this.$http
           .post(
-            this.$API_LOCATION + "/login",
+            this.$API_LOCATION + "/signup",
             {
               email: this.email,
-              password: this.password
+              password: this.password,
+              name: this.name,
+              address: this.address,
+              govt_id: this.govid,
+              govt_id_type: "Meh..."
             },
             {
               emulateJSON: true
@@ -77,13 +121,9 @@ export default {
           )
           .then(
             response => {
-              this.$session.start();
-              this.$session.set("jwt", response.body.token);
-              this.$session.set("role", response.body.role);
-              this.msg = "Logged In";
+              this.msg = response.body.message;
               this.$modal.show("notifyLog");
 
-              //this.$router.push("/home");
             },
             response => {
               if (response.body.error) {
