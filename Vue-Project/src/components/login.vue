@@ -82,8 +82,8 @@ export default {
               this.$session.start();
               this.$session.set("jwt", response.body.token);
               this.$session.set("role", response.body.role);
-              this.msg = "Logged In";
-              this.$modal.show("notifyLog");
+              //this.msg = "Logged In";
+              //this.$modal.show("notifyLog");
 
               //this.$router.push("/home");
             },

@@ -40,6 +40,7 @@ export default {
     logout: function() {
       this.$session.destroy();
       this.$router.push("/");
+      location.reload();
     }
   }
 };
