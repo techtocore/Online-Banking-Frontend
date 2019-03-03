@@ -125,7 +125,6 @@ export default {
             response => {
               this.msg = response.body.message;
               this.$modal.show("notifyLog");
-
             },
             response => {
               if (response.body.error) {

@@ -9,7 +9,7 @@
 
 <script>
 import footer from "./components/footer";
-import navbar from './components/navbar'
+import navbar from "./components/navbar";
 
 export default {
   components: {
