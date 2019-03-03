@@ -84,8 +84,7 @@ export default {
               this.$session.set("role", response.body.role);
               //this.msg = "Logged In";
               //this.$modal.show("notifyLog");
-
-              //this.$router.push("/home");
+              this.$router.push("/dashboard");
             },
             response => {
               if (response.body.error) {

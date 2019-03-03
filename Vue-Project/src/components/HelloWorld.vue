@@ -21,38 +21,38 @@
 </template>
 
 <script>
-import login from "./login.vue";
-import signup from "./signup.vue";
-
-export default {
-  name: "app",
-  props: {
-    msg: String
-  },
-  data() {
-    return {
-      currentComponent: null
-    };
-  },
-  components: {
-    login: login,
-    signup: signup
-  },
-  methods: {
-    swapComponent: function(component) {
-      this.currentComponent = component;
+  import login from "./login.vue";
+  import signup from "./signup.vue";
+  
+  export default {
+    name: "app",
+    props: {
+      msg: String
+    },
+    data() {
+      return {
+        currentComponent: null
+      };
+    },
+    components: {
+      login: login,
+      signup: signup
+    },
+    methods: {
+      swapComponent: function(component) {
+        this.currentComponent = component;
+      }
     }
-  }
-};
+  };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1 {
-  color: #42b983;
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-}
+  h1 {
+    color: #42b983;
+    font-family: "Avenir", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+  }
 </style>
