@@ -8,5 +8,4 @@ Steps to set-up project:
 4. cd Online-Banking-Frontend/
 5. cd Vue-Project/
 6. sudo npm install
-7. cd ..
 8. npm run serve (for development server)
