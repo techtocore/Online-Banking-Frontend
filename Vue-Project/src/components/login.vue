@@ -48,7 +48,7 @@ export default {
   name: "app",
   beforeCreate() {
     if (this.$session.exists()) {
-      this.$router.push("/DashBoard");
+      this.$router.push("/dashboard");
     }
     $("#loginPassword").keypress(function(e) {
       if (e.which == 13) {
@@ -90,6 +90,7 @@ export default {
               this.$session.set("role", response.body.role);
               //this.msg = "Logged In";
               //this.$modal.show("notifyLog");
+              location.reload();
               this.$router.push("/dashboard");
             },
             response => {
