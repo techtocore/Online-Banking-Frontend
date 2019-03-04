@@ -1,52 +1,63 @@
 <template>
-  <div class="row">
-    <div class="col-4"></div>
-    <div class="col-4">
-      <br>
-      <br>
-      <br>
-      <br>
-      <h1>Login</h1>
-      <br>
-      <form v-on:submit.prevent="login">
-        <div class="form-group">
-          <label for="email">Email address:</label>
-          <input
-            type="email"
-            class="form-control"
-            name="email"
-            v-validate="{ required:true, email: true}"
-            placeholder="Email ID"
-            v-model="email"
-          >
-        </div>
-        <div class="form-group">
-          <label for="pwd">Password:</label>
-          <input
-            id="loginPassword"
-            class="form-control"
-            type="password"
-            name="password"
-            v-validate="{ required:true}"
-            placeholder="Password"
-            v-model="password"
-          >
-        </div>
+  <div>
+    <div :is="currentComponent"></div>
+    <div class="row" v-show="!currentComponent">
+      <div class="col-4"></div>
+      <div class="col-4">
         <br>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+        <br>
+        <br>
+        <br>
+        <h1>Login</h1>
+        <br>
+        <form v-on:submit.prevent="login">
+          <div class="form-group">
+            <label for="email">Email address:</label>
+            <input
+              type="email"
+              class="form-control"
+              name="email"
+              v-validate="{ required:true, email: true}"
+              placeholder="Email ID"
+              v-model="email"
+            >
+          </div>
+          <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input
+              id="loginPassword"
+              class="form-control"
+              type="password"
+              name="password"
+              v-validate="{ required:true}"
+              placeholder="Password"
+              v-model="password"
+            >
+          </div>
+          <br>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <br>
+        <span @click="swapComponent('forgotPassword')">Forgot Password?</span>
+      </div>
+      <div class="col-4"></div>
+      <modal name="notifyLog" :height="'auto'" @closed="clearMsg">
+        <div class="modalColor">{{msg}}</div>
+      </modal>
     </div>
-    <div class="col-4"></div>
-    <modal name="notifyLog" :height="'auto'" @closed="clearMsg">
-      <div class="modalColor">{{msg}}</div>
-    </modal>
   </div>
 </template> 
 
 <script>
+import forgotPassword from "./forgotPassword.vue";
+
 export default {
   name: "app",
+  components: {
+    forgotPassword
+  },
   beforeCreate() {
+    document.documentElement.style.overflow = "hidden";
     if (this.$session.exists()) {
       this.$router.push("/dashboard");
     }
@@ -60,7 +71,8 @@ export default {
     return {
       email: "",
       password: "",
-      msg: ""
+      msg: "",
+      currentComponent: null
     };
   },
   methods: {
@@ -106,6 +118,9 @@ export default {
     },
     clearMsg: function() {
       this.msg = "";
+    },
+    swapComponent: function(component) {
+      this.currentComponent = component;
     }
   }
 };
@@ -114,6 +129,9 @@ export default {
 <style scoped>
 .form-group,
 h1 {
+  color: aliceblue;
+}
+span {
   color: aliceblue;
 }
 .modalColor {
