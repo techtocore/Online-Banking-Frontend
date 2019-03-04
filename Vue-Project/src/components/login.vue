@@ -23,6 +23,7 @@
         <div class="form-group">
           <label for="pwd">Password:</label>
           <input
+            id="loginPassword"
             class="form-control"
             type="password"
             name="password"
@@ -49,6 +50,11 @@ export default {
     if (this.$session.exists()) {
       this.$router.push("/DashBoard");
     }
+    $("#loginPassword").keypress(function(e) {
+      if (e.which == 13) {
+        login();
+      }
+    });
   },
   data() {
     return {

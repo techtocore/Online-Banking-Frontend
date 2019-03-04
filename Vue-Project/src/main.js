@@ -12,7 +12,7 @@ import store from "./store";
 
 Vue.config.productionTip = false;
 
-Vue.prototype.$API_LOCATION = "http://localhost:5000/api";
+Vue.prototype.$API_LOCATION = "http://52.172.44.93:5000/api";
 
 Vue.use(vueSession);
 Vue.use(VModal);
