@@ -74,6 +74,8 @@ export default {
             } else {
               this.msg = "There has been some error. Please try again later";
             }
+            this.oldpassword = "";
+            this.newpassword = "";
             this.$modal.show("notifyLog");
           },
           response => {
@@ -82,6 +84,8 @@ export default {
             } else {
               this.msg = "There has been some error. Please try again later";
             }
+            this.oldpassword = "";
+            this.newpassword = "";
             this.$modal.show("notifyLog");
           }
         );
