@@ -1,7 +1,7 @@
 <template>
   <div class="row">
-    <div class="col-4"></div>
-    <div class="col-4">
+    <div class="col-lg-4 col-md-2 col-sm-1"></div>
+    <div class="col-lg-4 col-md-8 com-sm-10">
       <br>
       <br>
       <br>
@@ -72,7 +72,7 @@
       <br>
       <br>
     </div>
-    <div class="col-4"></div>
+    <div class="col-lg-4 col-md-2 col-sm-1"></div>
     <modal name="notifyLog" :height="'auto'" @closed="clearMsg">
       <div class="modalColor">{{msg}}</div>
     </modal>

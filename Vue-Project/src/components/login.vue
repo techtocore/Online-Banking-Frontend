@@ -2,8 +2,8 @@
   <div>
     <div :is="currentComponent"></div>
     <div class="row" v-show="!currentComponent">
-      <div class="col-4"></div>
-      <div class="col-4">
+      <div class="col-lg-4 col-md-2 col-sm-1"></div>
+      <div class="col-lg-4 col-md-8 com-sm-10">
         <br>
         <br>
         <br>
@@ -40,7 +40,7 @@
         <br>
         <span @click="swapComponent('forgotPassword')">Forgot Password?</span>
       </div>
-      <div class="col-4"></div>
+      <div class="col-lg-4 col-md-2 col-sm-1"></div>
       <modal name="notifyLog" :height="'auto'" @closed="clearMsg">
         <div class="modalColor">{{msg}}</div>
       </modal>
