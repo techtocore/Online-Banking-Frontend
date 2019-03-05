@@ -1,7 +1,7 @@
 <template>
   <div class="row">
-    <div class="col-4"></div>
-    <div class="col-4">
+    <div class="col-lg-4 col-md-2 col-sm-1"></div>
+    <div class="col-lg-4 col-md-8 com-sm-10">
       <br>
       <br>
       <br>
@@ -24,7 +24,7 @@
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>
-    <div class="col-4"></div>
+    <div class="col-lg-4 col-md-2 col-sm-1"></div>
     <modal name="notifyLog" :height="'auto'" @closed="clearMsg">
       <div class="modalColor">{{msg}}</div>
     </modal>
@@ -56,14 +56,24 @@ export default {
               emulateJSON: true
             }
           )
-          .then(response => {
-            if (response.body.message) {
-              this.msg = response.body.message;
-            } else {
-              this.msg = "There has been some error. Please try again later";
+          .then(
+            response => {
+              if (response.body.message) {
+                this.msg = response.body.message;
+              } else {
+                this.msg = "There has been some error. Please try again later";
+              }
+              this.$modal.show("notifyLog");
+            },
+            response => {
+              if (response.body.error) {
+                this.msg = response.body.error;
+              } else {
+                this.msg = "There has been some error. Please try again later";
+              }
+              this.$modal.show("notifyLog");
             }
-            this.$modal.show("notifyLog");
-          });
+          );
       }
     },
     clearMsg: function() {

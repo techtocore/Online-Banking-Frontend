@@ -123,7 +123,11 @@ export default {
           )
           .then(
             response => {
-              this.msg = response.body.message;
+              if (response.body.message) {
+                this.msg = response.body.message;
+              } else {
+                this.msg = "There has been some error. Please try again later";
+              }
               this.$modal.show("notifyLog");
             },
             response => {
