@@ -61,11 +61,11 @@ export default {
     if (this.$session.exists()) {
       this.$router.push("/dashboard");
     }
-    $("#loginPassword").keypress(function(e) {
-      if (e.which == 13) {
-        login();
-      }
-    });
+    // $("#loginPassword").keypress(function(e) {
+    //   if (e.which == 13) {
+    //     login();
+    //   }
+    // });
   },
   data() {
     return {

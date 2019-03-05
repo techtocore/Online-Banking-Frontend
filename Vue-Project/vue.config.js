@@ -3,7 +3,6 @@ module.exports = {
   publicPath: undefined,
   outputDir: undefined,
   assetsDir: "/assets",
-  disableHostCheck: true,
   productionSourceMap: undefined,
   parallel: undefined,
   css: {

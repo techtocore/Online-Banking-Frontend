@@ -6,7 +6,6 @@ import VModal from "vue-js-modal";
 import VueValidate from "vee-validate";
 import VueResource from "vue-resource";
 import store from "./store";
-//import bootstrap from "bootstrap";
 import "bootstrap";
 import jquery from "jquery";
 
@@ -18,7 +17,6 @@ Vue.use(vueSession);
 Vue.use(VModal);
 Vue.use(VueResource);
 Vue.use(VueValidate);
-//Vue.use(bootstrap);
 Vue.use(jquery);
 
 new Vue({
