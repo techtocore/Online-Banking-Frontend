@@ -9,17 +9,6 @@
         <br>
         <form v-on:submit.prevent="change">
           <div class="form-group">
-            <label for="email">Email address:</label>
-            <input
-              type="email"
-              class="form-control"
-              name="email"
-              v-validate="{ required:true, email: true}"
-              placeholder="Email ID"
-              v-model="email"
-            >
-          </div>
-          <div class="form-group">
             <label for="name">Old Password:</label>
             <input
               type="password"
@@ -58,50 +47,44 @@ export default {
     return {
       oldpassword: "",
       newpassword: "",
-      email: "",
       msg: ""
     };
   },
   methods: {
     change: function() {
-      if (this.errors.has("email") || !this.fields.email.dirty) {
-        this.msg = "Enter a valid email";
-        this.$modal.show("notifyLog");
-      } else {
-        this.$http
-          .post(
-            this.$API_LOCATION + "/changepassword",
-            {
-              email: this.email,
-              oldpassword: this.oldpassword,
-              newpassword: this.newpassword
-            },
-            {
-              emulateJSON: true,
-              headers: {
-                Authorization: "Bearer " + this.$session.get("jwt")
-              }
+      this.$http
+        .post(
+          this.$API_LOCATION + "/changepassword",
+          {
+            email: this.$session.get("email"),
+            oldpassword: this.oldpassword,
+            newpassword: this.newpassword
+          },
+          {
+            emulateJSON: true,
+            headers: {
+              Authorization: "Bearer " + this.$session.get("jwt")
             }
-          )
-          .then(
-            response => {
-              if (response.body.message) {
-                this.msg = response.body.message;
-              } else {
-                this.msg = "There has been some error. Please try again later";
-              }
-              this.$modal.show("notifyLog");
-            },
-            response => {
-              if (response.body.error) {
-                this.msg = response.body.error;
-              } else {
-                this.msg = "There has been some error. Please try again later";
-              }
-              this.$modal.show("notifyLog");
+          }
+        )
+        .then(
+          response => {
+            if (response.body.message) {
+              this.msg = response.body.message;
+            } else {
+              this.msg = "There has been some error. Please try again later";
             }
-          );
-      }
+            this.$modal.show("notifyLog");
+          },
+          response => {
+            if (response.body.error) {
+              this.msg = response.body.error;
+            } else {
+              this.msg = "There has been some error. Please try again later";
+            }
+            this.$modal.show("notifyLog");
+          }
+        );
     },
     clearMsg: function() {
       this.msg = "";

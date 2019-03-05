@@ -18,6 +18,9 @@
         style="background:transparent;"
       >
         <ul class="navbar-nav ml-auto" style="background:transparent;">
+          <li class="nav-item" v-if="this.$session.exists()">
+            <a class="nav-link" href="#">Hi {{username}}</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Contact Us</a>
           </li>
@@ -34,7 +37,12 @@
 export default {
   name: "app",
   data() {
-    return {};
+    return {
+      username: ""
+    };
+  },
+  created() {
+    this.username = this.$session.get("name");
   },
   methods: {
     logout: function() {

@@ -56,7 +56,7 @@ export default {
   components: {
     forgotPassword
   },
-  beforeCreate() {
+  created() {
     document.documentElement.style.overflow = "hidden";
     if (this.$session.exists()) {
       this.$router.push("/dashboard");
@@ -100,6 +100,9 @@ export default {
               this.$session.start();
               this.$session.set("jwt", response.body.token);
               this.$session.set("role", response.body.role);
+              this.$session.set("email", this.email);
+              this.$session.set("name", response.body.name);
+
               //this.msg = "Logged In";
               //this.$modal.show("notifyLog");
               location.reload();

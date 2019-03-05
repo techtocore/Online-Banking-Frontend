@@ -93,6 +93,11 @@ export default {
     changePassword,
     users
   },
+  beforeCreate() {
+    if (!this.$session.exists()) {
+      this.$router.push("/");
+    }
+  },
   created() {
     this.role = this.$session.get("role");
   },
