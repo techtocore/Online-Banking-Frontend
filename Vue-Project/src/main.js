@@ -7,17 +7,19 @@ import VueValidate from "vee-validate";
 import VueResource from "vue-resource";
 import store from "./store";
 import "bootstrap";
-import jquery from "jquery";
 
 Vue.config.productionTip = false;
 
-Vue.prototype.$API_LOCATION = "/api";
+Vue.prototype.$API_LOCATION = "http://52.172.44.93/api";
 
 Vue.use(vueSession);
 Vue.use(VModal);
 Vue.use(VueResource);
 Vue.use(VueValidate);
-Vue.use(jquery);
+
+window.$ = require("jquery");
+window.JQuery = require("jquery");
+window.DataTable = require("datatables.net");
 
 new Vue({
   router,
