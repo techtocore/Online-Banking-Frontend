@@ -5,6 +5,7 @@
       <div class="col-lg-3 col-md-2 col-sm-1"></div>
       <div class="col-lg-6 col-md-8 com-sm-10">
         <br>
+        <br>
         <h2>Change Password</h2>
         <br>
         <form v-on:submit.prevent="change">

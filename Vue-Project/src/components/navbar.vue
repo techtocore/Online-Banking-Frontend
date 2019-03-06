@@ -2,7 +2,7 @@
   <section class="header">
     <nav class="navbar fixed-top navbar-static-top navbar-expand-md navbar-dark bg-dark">
       <img src="/logo.png" width="4%">
-      <a href="/" class="navbar-brand" style="padding-left:15px;">PBS</a>
+      <a href="#" class="navbar-brand" style="padding-left:15px;">PBS</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -20,6 +20,9 @@
         <ul class="navbar-nav ml-auto" style="background:transparent;">
           <li class="nav-item" v-if="this.$session.exists()">
             <a class="nav-link" href="#">Hi {{username}}</a>
+          </li>
+          <li class="nav-item" v-if="this.$session.exists()">
+            <a class="nav-link" href="#" @click="dash">Dashboard</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Contact Us</a>
@@ -49,6 +52,9 @@ export default {
       this.$session.destroy();
       this.$router.push("/");
       location.reload();
+    },
+    dash: function() {
+      this.$router.push("/dashboard");
     }
   }
 };

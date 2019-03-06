@@ -2,7 +2,7 @@
   <div>
     <center>
       <br>
-      <h2 class="head">User List</h2>
+      <h2 class="head">Benificiary List</h2>
     </center>
     <table id="allEvents" class="table table-hover main">
       <thead>
@@ -10,17 +10,15 @@
           <th>ID</th>
           <th>Name</th>
           <th>Email ID</th>
-          <th>Address</th>
-          <th>Govt ID</th>
+          <th>Account Number</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in userList" :key="item.id">
-          <td>{{item.id}}</td>
+        <tr v-for="(item,i) in userList" :key="item.ben_email">
+          <td>{{i}}</td>
           <td>{{item.name}}</td>
-          <td>{{item.email}}</td>
-          <td>{{item.address}}</td>
-          <td>{{item.govt_id}}</td>
+          <td>{{item.ben_email}}</td>
+          <td>{{item.ben_account_no}}</td>
         </tr>
       </tbody>
     </table>
@@ -49,16 +47,16 @@ export default {
   methods: {
     fetchSlots: function() {
       this.$http
-        .get(this.$API_LOCATION + "/users", {
+        .get(this.$API_LOCATION + "/viewbenificiary", {
           headers: {
             Authorization: "Bearer " + this.$session.get("jwt")
           }
         })
         .then(
           data => {
-            if (data.body.auth) {
+            if (data.body.success) {
               //this.userList = data.body.data;
-              let list = data.body.users;
+              let list = data.body.benificiaries;
               console.log(list);
               this.userList = list;
               //console.log(this.userList);

@@ -6,15 +6,22 @@
       <div class="col-lg-6 col-md-8 com-sm-10">
         <br>
         <br>
-        <h2>Create User Role</h2>
+        <h2>Delete Benificiary</h2>
         <br>
-        <form v-on:submit.prevent="create">
+        <form v-on:submit.prevent="del">
           <div class="form-group">
-            <label for="name">Role Name:</label>
-            <input type="text" class="form-control" name="name" placeholder="Name" v-model="name">
+            <label for="name">Benificiary Email ID:</label>
+            <input
+              type="text"
+              class="form-control"
+              name="ben_email"
+              placeholder="Email ID"
+              v-model="ben_email"
+            >
           </div>
+
           <br>
-          <button type="submit" class="btn btn-primary">Create</button>
+          <button type="submit" class="btn btn-primary">Delete</button>
         </form>
       </div>
       <div class="col-lg-3 col-md-2 col-sm-1"></div>
@@ -29,22 +36,19 @@
 export default {
   name: "app",
   data() {
-    return {
-      name: "",
-      msg: ""
-    };
+    return { msg: "", ben_email: "" };
   },
   methods: {
-    create: function() {
-      if (this.name.trim() === "") {
-        this.msg = "Enter a valid name";
+    del: function() {
+      if (this.ben_email.trim() === "") {
+        this.msg = "Enter valid inputs";
         this.$modal.show("notifyLog");
       } else {
         this.$http
           .post(
-            this.$API_LOCATION + "/role",
+            this.$API_LOCATION + "/deletebenificiary",
             {
-              name: this.name
+              ben_email: this.ben_email
             },
             {
               emulateJSON: true,

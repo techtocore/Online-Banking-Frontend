@@ -3,15 +3,20 @@
     <!-- TODO: SHOW ONLY IF LOGGED IN -->
     <div class="row">
       <div class="col-lg-3 col-md-3 col-sm-12">
-        <h2>Menu</h2>
         <br>
+        <h1>Menu</h1>
         <div class="list-group" style="overflow-y: auto; height: 60vh;">
           <div v-if="role === 'superuser'">
             <button
               type="button"
               class="list-group-item list-group-item-action active"
-              @click="switchTab('test')"
-            >Dashboard</button>
+              @click="switchTab('overview')"
+            >Account Summary</button>
+            <button
+              type="button"
+              class="list-group-item list-group-item-action"
+              @click="switchTab('benificiaries')"
+            >Manage Benificiaries</button>
             <button
               type="button"
               class="list-group-item list-group-item-action"
@@ -27,7 +32,7 @@
               class="list-group-item list-group-item-action"
               @click="switchTab('attachRole')"
             >Attach Role</button>
-            <button
+            <!-- <button
               type="button"
               class="list-group-item list-group-item-action"
               @click="switchTab('createPermission')"
@@ -36,7 +41,7 @@
               type="button"
               class="list-group-item list-group-item-action"
               @click="switchTab('attachPermission')"
-            >Attach Permission</button>
+            >Attach Permission</button>-->
             <button
               type="button"
               class="list-group-item list-group-item-action"
@@ -48,6 +53,12 @@
       <div class="col-lg-9 col-md-9 col-sm-12">
         <div v-if="x=='test'">
           <test></test>
+        </div>
+        <div v-if="x=='overview'">
+          <overview></overview>
+        </div>
+        <div v-if="x=='benificiaries'">
+          <benificiaries></benificiaries>
         </div>
         <div v-if="x=='users'">
           <users></users>
@@ -81,6 +92,11 @@ import createRole from "@/components/createRole.vue";
 import createPermission from "@/components/createPermission.vue";
 import changePassword from "@/components/changePassword.vue";
 import users from "@/components/users.vue";
+import overview from "@/components/overview.vue";
+import addBenificiary from "@/components/addBenificiary.vue";
+import viewBenificiary from "@/components/viewBenificiary.vue";
+import deleteBenificiary from "@/components/deleteBenificiary.vue";
+import benificiaries from "@/components/benificiaries.vue";
 
 export default {
   name: "dashboard",
@@ -91,7 +107,12 @@ export default {
     createRole,
     createPermission,
     changePassword,
-    users
+    users,
+    overview,
+    addBenificiary,
+    benificiaries,
+    viewBenificiary,
+    deleteBenificiary
   },
   beforeCreate() {
     if (!this.$session.exists()) {
@@ -100,6 +121,7 @@ export default {
   },
   created() {
     this.role = this.$session.get("role");
+    this.x = "overview";
   },
   data() {
     return {
@@ -114,3 +136,11 @@ export default {
   }
 };
 </script>
+<style scoped>
+h1 {
+  color: #42b983;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+</style>
