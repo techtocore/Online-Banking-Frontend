@@ -1,5 +1,6 @@
 <template>
   <div>
+    <navbar></navbar>
     <div :is="currentComponent"></div>
     <div class="hello" v-show="!currentComponent">
       <br>
@@ -23,6 +24,7 @@
 <script>
 import login from "./login.vue";
 import signup from "./signup.vue";
+import navbar from "./navbar.vue";
 
 export default {
   name: "app",
@@ -35,8 +37,9 @@ export default {
     };
   },
   components: {
-    login: login,
-    signup: signup
+    login,
+    signup,
+    navbar
   },
   methods: {
     swapComponent: function(component) {

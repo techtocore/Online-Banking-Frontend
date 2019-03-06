@@ -102,10 +102,8 @@ export default {
               this.$session.set("role", response.body.role);
               this.$session.set("email", this.email);
               this.$session.set("name", response.body.name);
-
-              //this.msg = "Logged In";
-              //this.$modal.show("notifyLog");
-              location.reload();
+              //vm.$forceUpdate();
+              //vm.$set("log", true);
               this.$router.push("/dashboard");
             },
             response => {

@@ -123,6 +123,11 @@ export default {
           )
           .then(
             response => {
+              this.email = "";
+              this.password = "";
+              this.name = "";
+              this.address = "";
+              this.govt_id = "";
               if (response.body.message) {
                 this.msg = response.body.message;
               } else {

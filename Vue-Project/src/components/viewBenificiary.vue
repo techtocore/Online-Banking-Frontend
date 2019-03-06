@@ -57,7 +57,7 @@ export default {
             if (data.body.success) {
               //this.userList = data.body.data;
               let list = data.body.benificiaries;
-              console.log(list);
+              //console.log(list);
               this.userList = list;
               //console.log(this.userList);
             } else {

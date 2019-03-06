@@ -2,7 +2,7 @@
   <section class="header">
     <nav class="navbar fixed-top navbar-static-top navbar-expand-md navbar-dark bg-dark">
       <img src="/logo.png" width="4%">
-      <a href="#" class="navbar-brand" style="padding-left:15px;">PBS</a>
+      <a href="#" class="navbar-brand" style="padding-left:15px;">Patronus</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -18,16 +18,18 @@
         style="background:transparent;"
       >
         <ul class="navbar-nav ml-auto" style="background:transparent;">
-          <li class="nav-item" v-if="this.$session.exists()">
+          <li class="nav-item" v-if="loggedIn" :key="loggedIn">
             <a class="nav-link" href="#">Hi {{username}}</a>
           </li>
-          <li class="nav-item" v-if="this.$session.exists()">
-            <a class="nav-link" href="#" @click="dash">Dashboard</a>
+          <li class="nav-item" v-if="loggedIn" :key="loggedIn">
+            <a class="nav-link" href="#">
+              <router-link to="/dashboard" style="color:">Dashboard</router-link>
+            </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Contact Us</a>
           </li>
-          <li class="nav-item" v-if="this.$session.exists()">
+          <li class="nav-item" v-if="loggedIn" :key="loggedIn">
             <a class="nav-link" v-on:click="logout" href="#">Logout</a>
           </li>
         </ul>
@@ -38,10 +40,14 @@
 
 <script>
 export default {
+  beforeMount() {
+    this.sessionCheck();
+  },
   name: "app",
   data() {
     return {
-      username: ""
+      username: "",
+      loggedIn: false
     };
   },
   created() {
@@ -51,10 +57,17 @@ export default {
     logout: function() {
       this.$session.destroy();
       this.$router.push("/");
-      location.reload();
+      this.sessionCheck();
     },
     dash: function() {
       this.$router.push("/dashboard");
+    },
+    sessionCheck: function() {
+      if (this.$session.exists()) {
+        this.loggedIn = true;
+      } else {
+        this.loggedIn = false;
+      }
     }
   }
 };
@@ -67,5 +80,9 @@ export default {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+a {
+  color: inherit;
+  text-decoration: none;
 }
 </style>

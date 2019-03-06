@@ -59,7 +59,7 @@ export default {
             if (data.body.auth) {
               //this.userList = data.body.data;
               let list = data.body.users;
-              console.log(list);
+              //console.log(list);
               this.userList = list;
               //console.log(this.userList);
             } else {

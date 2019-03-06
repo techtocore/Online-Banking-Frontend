@@ -1,20 +1,17 @@
 <template>
   <div id="app">
-    <navbar></navbar>
     <router-view></router-view>
-    <footers></footers>
+    <footer></footer>
   </div>
 </template>
 
 
 <script>
 import footer from "./components/footer";
-import navbar from "./components/navbar";
 
 export default {
   components: {
-    footers: footer,
-    navbar: navbar
+    footer: footer
   },
   name: "app",
   data() {

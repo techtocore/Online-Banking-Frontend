@@ -58,6 +58,7 @@ export default {
           )
           .then(
             response => {
+              this.email = "";
               if (response.body.message) {
                 this.msg = response.body.message;
               } else {

@@ -21,8 +21,10 @@ window.$ = require("jquery");
 window.JQuery = require("jquery");
 window.DataTable = require("datatables.net");
 
-new Vue({
+var vm = new Vue({
   router,
   store,
   render: h => h(App)
 }).$mount("#app");
+
+global.vm = vm;

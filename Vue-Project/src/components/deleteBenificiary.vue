@@ -59,6 +59,7 @@ export default {
           )
           .then(
             response => {
+              this.ben_email = "";
               if (response.body.message) {
                 this.msg = response.body.message;
               } else {
