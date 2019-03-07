@@ -15,12 +15,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item,i) in userList" :key="item.created_at">
+        <tr v-for="(item,i) in userList" :key="item.created_at" v-on:click="set(item)">
           <td>{{i+1}}</td>
           <td>{{item.email}}</td>
           <td>{{item.type}}</td>
           <td>{{item.message}}</td>
-          <td v-on:click="set(item)">{{item.resolved}}</td>
+          <td>{{item.resolved}}</td>
         </tr>
       </tbody>
     </table>
@@ -48,7 +48,8 @@ export default {
       userList: "",
       msg: "",
       type: "",
-      body: ""
+      body: "",
+      email: ""
     };
   },
 
@@ -56,6 +57,7 @@ export default {
     set: function(item) {
       this.type = item.type;
       this.body = item.message;
+      this.email = iteem.email;
       this.$modal.show("resolveModal");
     },
     resolve: function() {
@@ -64,7 +66,8 @@ export default {
           this.$API_LOCATION + "/resolvecomplaint",
           {
             type: this.type,
-            message: this.body
+            message: this.body,
+            email: this.email
           },
           {
             emulateJSON: true,
