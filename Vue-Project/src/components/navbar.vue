@@ -27,7 +27,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contact Us</a>
+            <a class="nav-link" href="/faq.html">FAQ</a>
           </li>
           <li class="nav-item" v-if="loggedIn" :key="loggedIn">
             <a class="nav-link" v-on:click="logout" href="#">Logout</a>

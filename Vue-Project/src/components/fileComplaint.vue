@@ -6,22 +6,32 @@
       <div class="col-lg-6 col-md-8 com-sm-10">
         <br>
         <br>
-        <h2>Attach Role to User</h2>
+        <h2>Grievance Redressal</h2>
         <br>
-        <form v-on:submit.prevent="attach">
+        <form v-on:submit.prevent="add">
           <div class="form-group">
-            <label for="name">Email ID:</label>
-            <input type="email" class="form-control" name="name" placeholder="Name" v-model="email">
+            <label for="name">Type:</label>
+            <select v-model="type" class="form-control">
+              <option>Feedback</option>
+              <option>Complaint</option>
+            </select>
+            <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <button @click="select('Feedback')" class="dropdown-item">Feedback</button>
+              <button @click="select('Complaint')" class="dropdown-item">Complaint</button> 
+            </div>-->
           </div>
           <div class="form-group">
-            <label for="name">Role Name:</label>
-            <!-- <input type="text" class="form-control" name="name" placeholder="Name" v-model="role"> -->
-            <select v-model="type" class="form-control">
-              <option v-for="role in roleList" :key="role.id">{{role.name}}</option>
-            </select>
+            <label for="name">Details:</label>
+            <input
+              type="text"
+              class="form-control"
+              name="body"
+              placeholder="Type it here"
+              v-model="body"
+            >
           </div>
           <br>
-          <button type="submit" class="btn btn-primary">Attach</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
       <div class="col-lg-3 col-md-2 col-sm-1"></div>
@@ -37,27 +47,26 @@ export default {
   name: "app",
   data() {
     return {
-      role: "",
-      email: "",
+      type: "Feedback",
       msg: "",
-      roleList: ""
+      body: ""
     };
   },
-  beforeMount() {
-    this.fetchRoles();
-  },
   methods: {
-    attach: function() {
-      if (this.name.trim() === "" || this.email.trim() === "") {
+    // select: function(type) {
+    //   this.type = type;
+    // },
+    add: function() {
+      if (this.body.trim() === "") {
         this.msg = "Enter valid inputs";
         this.$modal.show("notifyLog");
       } else {
         this.$http
           .post(
-            this.$API_LOCATION + "/assign-role",
+            this.$API_LOCATION + "/filecomplaint",
             {
-              role: this.role,
-              email: this.email
+              type: this.type,
+              message: this.body
             },
             {
               emulateJSON: true,
@@ -68,8 +77,7 @@ export default {
           )
           .then(
             response => {
-              this.role = "";
-              this.email = "";
+              this.body = "";
               if (response.body.message) {
                 this.msg = response.body.message;
               } else {
@@ -87,37 +95,6 @@ export default {
             }
           );
       }
-    },
-    fetchRoles: function() {
-      this.$http
-        .get(this.$API_LOCATION + "/getallroles", {
-          headers: {
-            Authorization: "Bearer " + this.$session.get("jwt")
-          }
-        })
-        .then(
-          data => {
-            if (data.body.success) {
-              //this.userList = data.body.data;
-              let list = data.body.Roles;
-              //console.log(list);
-              this.roleList = list;
-              //console.log(this.userList);
-            } else {
-              this.msg = "There has been some error. Please try again later.";
-              this.$modal.show("slotsModal");
-            }
-          },
-          data => {
-            if (data.body.error) {
-              this.msg = data.body.error;
-              this.$modal.show("slotsModal");
-            } else {
-              this.msg = "There has been some error. Please try again later.";
-              this.$modal.show("slotsModal");
-            }
-          }
-        );
     },
     clearMsg: function() {
       this.msg = "";

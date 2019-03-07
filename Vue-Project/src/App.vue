@@ -1,18 +1,13 @@
 <template>
   <div id="app">
     <router-view></router-view>
-    <footer></footer>
   </div>
 </template>
 
 
 <script>
-import footer from "./components/footer";
-
 export default {
-  components: {
-    footer: footer
-  },
+  components: {},
   name: "app",
   data() {
     return {};

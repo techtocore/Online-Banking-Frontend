@@ -27,6 +27,11 @@
               <button
                 type="button"
                 class="list-group-item list-group-item-action"
+                @click="switchTab('deleteUser')"
+              >Delete Users</button>
+              <button
+                type="button"
+                class="list-group-item list-group-item-action"
                 @click="switchTab('createRole')"
               >Create Role</button>
               <button
@@ -44,6 +49,66 @@
               class="list-group-item list-group-item-action"
               @click="switchTab('attachPermission')"
               >Attach Permission</button>-->
+              <button
+                type="button"
+                class="list-group-item list-group-item-action"
+                @click="switchTab('fileComplaint')"
+              >File Complaint</button>
+              <button
+                type="button"
+                class="list-group-item list-group-item-action"
+                @click="switchTab('complaints')"
+              >Complaints</button>
+              <button
+                type="button"
+                class="list-group-item list-group-item-action"
+                @click="switchTab('changePassword')"
+              >Change Password</button>
+            </div>
+
+            <div v-if="role === 'bankmanager'">
+              <button
+                type="button"
+                class="list-group-item list-group-item-action active"
+                @click="switchTab('overview')"
+              >Account Summary</button>
+              <button
+                type="button"
+                class="list-group-item list-group-item-action"
+                @click="switchTab('users')"
+              >Users</button>
+              <button
+                type="button"
+                class="list-group-item list-group-item-action"
+                @click="switchTab('deleteUser')"
+              >Delete User</button>
+              <button
+                type="button"
+                class="list-group-item list-group-item-action"
+                @click="switchTab('complaints')"
+              >Complaints</button>
+              <button
+                type="button"
+                class="list-group-item list-group-item-action"
+                @click="switchTab('changePassword')"
+              >Change Password</button>
+            </div>
+            <div v-if="role === 'user'">
+              <button
+                type="button"
+                class="list-group-item list-group-item-action active"
+                @click="switchTab('overview')"
+              >Account Summary</button>
+              <button
+                type="button"
+                class="list-group-item list-group-item-action"
+                @click="switchTab('benificiaries')"
+              >Manage Benificiaries</button>
+              <button
+                type="button"
+                class="list-group-item list-group-item-action"
+                @click="switchTab('fileComplaint')"
+              >File Complaint</button>
               <button
                 type="button"
                 class="list-group-item list-group-item-action"
@@ -80,15 +145,26 @@
           <div v-if="x=='changePassword'">
             <changePassword></changePassword>
           </div>
+          <div v-if="x=='fileComplaint'">
+            <fileComplaint></fileComplaint>
+          </div>
+          <div v-if="x=='complaints'">
+            <complaints></complaints>
+          </div>
+          <div v-if="x=='deleteUser'">
+            <deleteUser></deleteUser>
+          </div>
         </div>
       </div>
     </div>
+    <footer></footer>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import navbar from "@/components/navbar.vue";
+import footer from "@/components/footer.vue";
 import test from "@/components/test.vue";
 import attachRole from "@/components/attachRole.vue";
 import attachPermission from "@/components/attachPermission.vue";
@@ -97,15 +173,16 @@ import createPermission from "@/components/createPermission.vue";
 import changePassword from "@/components/changePassword.vue";
 import users from "@/components/users.vue";
 import overview from "@/components/overview.vue";
-import addBenificiary from "@/components/addBenificiary.vue";
-import viewBenificiary from "@/components/viewBenificiary.vue";
-import deleteBenificiary from "@/components/deleteBenificiary.vue";
 import benificiaries from "@/components/benificiaries.vue";
+import fileComplaint from "@/components/fileComplaint.vue";
+import complaints from "@/components/complaints.vue";
+import deleteUser from "@/components/deleteUser.vue";
 
 export default {
   name: "dashboard",
   components: {
     navbar,
+    footer,
     test,
     attachRole,
     attachPermission,
@@ -114,10 +191,10 @@ export default {
     changePassword,
     users,
     overview,
-    addBenificiary,
     benificiaries,
-    viewBenificiary,
-    deleteBenificiary
+    fileComplaint,
+    complaints,
+    deleteUser
   },
   beforeCreate() {
     if (!this.$session.exists()) {
