@@ -16,8 +16,8 @@
           <div class="form-group">
             <label for="name">Role Name:</label>
             <!-- <input type="text" class="form-control" name="name" placeholder="Name" v-model="role"> -->
-            <select v-model="type" class="form-control">
-              <option v-for="role in roleList" :key="role.id">{{role.name}}</option>
+            <select v-model="role" class="form-control">
+              <option v-for="roleIt in roleList" :key="roleIt.id">{{roleIt.name}}</option>
             </select>
           </div>
           <br>
@@ -48,7 +48,7 @@ export default {
   },
   methods: {
     attach: function() {
-      if (this.name.trim() === "" || this.email.trim() === "") {
+      if (this.role.trim() === "" || this.email.trim() === "") {
         this.msg = "Enter valid inputs";
         this.$modal.show("notifyLog");
       } else {
