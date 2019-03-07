@@ -57,7 +57,7 @@ export default {
     set: function(item) {
       this.type = item.type;
       this.body = item.message;
-      this.email = iteem.email;
+      this.email = item.email;
       this.$modal.show("resolveModal");
     },
     resolve: function() {
