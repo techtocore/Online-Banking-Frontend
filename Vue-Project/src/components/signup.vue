@@ -46,7 +46,7 @@
           </div>
           <div class="form-group">
             <label for="govid">Govt ID Type:</label>
-            <select v-model="type" class="form-control">
+            <select v-model="govt_id_type" class="form-control">
               <option>Aadhar</option>
               <option>Driving License</option>
               <option>Pan Card</option>
@@ -116,6 +116,9 @@ export default {
     };
   },
   methods: {
+    swapComponent: function(component) {
+      this.currentComponent = component;
+    },
     signup: function() {
       if (this.errors.has("email") || !this.fields.email.dirty) {
         this.msg = "Enter a valid email";
@@ -167,9 +170,6 @@ export default {
     },
     clearMsg: function() {
       this.msg = "";
-    },
-    swapComponent: function(component) {
-      this.currentComponent = component;
     }
   }
 };

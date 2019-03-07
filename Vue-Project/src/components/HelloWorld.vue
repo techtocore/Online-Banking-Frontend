@@ -18,7 +18,7 @@
         <button @click="swapComponent('login')" class="btn btn-primary">Login</button>
       </center>
     </div>
-    <footer></footer>
+    <myfooter></myfooter>
   </div>
 </template>
 
@@ -26,7 +26,7 @@
 import login from "./login.vue";
 import signup from "./signup.vue";
 import navbar from "./navbar.vue";
-import footer from "./footer.vue";
+import myfooter from "./footer.vue";
 
 export default {
   name: "app",
@@ -42,7 +42,7 @@ export default {
     login,
     signup,
     navbar,
-    footer
+    myfooter
   },
   methods: {
     swapComponent: function(component) {

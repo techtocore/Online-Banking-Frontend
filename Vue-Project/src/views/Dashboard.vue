@@ -157,14 +157,14 @@
         </div>
       </div>
     </div>
-    <footer></footer>
+    <myfooter></myfooter>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import navbar from "@/components/navbar.vue";
-import footer from "@/components/footer.vue";
+import myfooter from "@/components/footer.vue";
 import test from "@/components/test.vue";
 import attachRole from "@/components/attachRole.vue";
 import attachPermission from "@/components/attachPermission.vue";
@@ -182,7 +182,7 @@ export default {
   name: "dashboard",
   components: {
     navbar,
-    footer,
+    myfooter,
     test,
     attachRole,
     attachPermission,

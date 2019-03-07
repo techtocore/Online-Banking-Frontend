@@ -1,6 +1,5 @@
 <template>
-  <section class="footer">
-    <div></div>
+  <section>
     <footer>
       <p>
         <a href="#" style="text-decoration : none; color: aliceblue;">
@@ -28,7 +27,7 @@ export default {
 </script>
 
 <style scoped>
-.footer {
+footer {
   position: fixed;
   text-align: center;
   bottom: 0;
@@ -47,10 +46,5 @@ export default {
   position: relative;
   width: 15px;
   z-index: 5;
-  -webkit-animation-name: pulse;
-  -webkit-animation-duration: 2s;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-timing-function: ease-in-out;
-  -webkit-animation-direction: alternate;
 }
 </style>
