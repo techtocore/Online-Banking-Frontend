@@ -55,6 +55,9 @@ export default {
     this.getSummary();
   },
   methods: {
+    clearMsg: function() {
+      this.msg = "";
+    },
     getSummary: function() {
       this.$http
         .get(this.$API_LOCATION + "/overview", {
@@ -83,10 +86,6 @@ export default {
           }
         );
     }
-  },
-
-  clearMsg: function() {
-    this.msg = "";
   }
 };
 </script>

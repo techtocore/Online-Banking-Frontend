@@ -155,7 +155,7 @@ export default {
                 this.msg = "There has been some error. Please try again later";
               }
               this.$modal.show("notifyLog");
-              swapComponent("login");
+              this.swapComponent("login");
             },
             response => {
               if (response.body.error) {

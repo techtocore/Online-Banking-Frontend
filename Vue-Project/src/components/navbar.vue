@@ -18,10 +18,10 @@
         style="background:transparent;"
       >
         <ul class="navbar-nav ml-auto" style="background:transparent;">
-          <li class="nav-item" v-if="loggedIn" :key="loggedIn">
+          <li class="nav-item" v-if="loggedIn">
             <a class="nav-link" href="#">Hi {{username}}</a>
           </li>
-          <li class="nav-item" v-if="loggedIn" :key="loggedIn">
+          <li class="nav-item" v-if="loggedIn">
             <a class="nav-link" href="#">
               <router-link to="/dashboard" style="color:">Dashboard</router-link>
             </a>
@@ -29,7 +29,7 @@
           <li class="nav-item">
             <a class="nav-link" href="/FAQ.html">FAQ</a>
           </li>
-          <li class="nav-item" v-if="loggedIn" :key="loggedIn">
+          <li class="nav-item" v-if="loggedIn">
             <a class="nav-link" v-on:click="logout" href="#">Logout</a>
           </li>
         </ul>

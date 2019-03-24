@@ -32,6 +32,16 @@
               <button
                 type="button"
                 class="list-group-item list-group-item-action"
+                @click="switchTab('blockAccount')"
+              >Block A/C</button>
+              <button
+                type="button"
+                class="list-group-item list-group-item-action"
+                @click="switchTab('unblockAccount')"
+              >Unblock A/C</button>
+              <button
+                type="button"
+                class="list-group-item list-group-item-action"
                 @click="switchTab('createRole')"
               >Create Role</button>
               <button
@@ -154,6 +164,12 @@
           <div v-if="x=='deleteUser'">
             <deleteUser></deleteUser>
           </div>
+          <div v-if="x=='blockAccount'">
+            <blockAccount></blockAccount>
+          </div>
+          <div v-if="x=='unblockAccount'">
+            <unblockAccount></unblockAccount>
+          </div>
         </div>
       </div>
     </div>
@@ -177,6 +193,8 @@ import benificiaries from "@/components/benificiaries.vue";
 import fileComplaint from "@/components/fileComplaint.vue";
 import complaints from "@/components/complaints.vue";
 import deleteUser from "@/components/deleteUser.vue";
+import blockAccount from "@/components/blockAccount.vue";
+import unblockAccount from "@/components/unblockAccount.vue";
 
 export default {
   name: "dashboard",
@@ -194,7 +212,9 @@ export default {
     benificiaries,
     fileComplaint,
     complaints,
-    deleteUser
+    deleteUser,
+    blockAccount,
+    unblockAccount
   },
   beforeCreate() {
     if (!this.$session.exists()) {
