@@ -112,7 +112,8 @@ export default {
       name: "",
       address: "",
       govid: "",
-      govt_id_type: ""
+      govt_id_type: "",
+      currentComponent: null
     };
   },
   methods: {
@@ -155,7 +156,7 @@ export default {
                 this.msg = "There has been some error. Please try again later";
               }
               this.$modal.show("notifyLog");
-              this.swapComponent("login");
+              setTimeout(this.swapComponent("login"), 2000);
             },
             response => {
               if (response.body.error) {

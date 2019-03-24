@@ -22,6 +22,16 @@
               <button
                 type="button"
                 class="list-group-item list-group-item-action"
+                @click="switchTab('transaction')"
+              >Send Money</button>
+              <!-- <button
+                type="button"
+                class="list-group-item list-group-item-action"
+                @click="switchTab('otp')"
+              >Enter OTP</button>-->
+              <button
+                type="button"
+                class="list-group-item list-group-item-action"
                 @click="switchTab('users')"
               >Users</button>
               <button
@@ -117,6 +127,11 @@
               <button
                 type="button"
                 class="list-group-item list-group-item-action"
+                @click="switchTab('transaction')"
+              >Send Money</button>
+              <button
+                type="button"
+                class="list-group-item list-group-item-action"
                 @click="switchTab('fileComplaint')"
               >File Complaint</button>
               <button
@@ -170,6 +185,12 @@
           <div v-if="x=='unblockAccount'">
             <unblockAccount></unblockAccount>
           </div>
+          <div v-if="x=='transaction'">
+            <transaction></transaction>
+          </div>
+          <div v-if="x=='otp'">
+            <otp></otp>
+          </div>
         </div>
       </div>
     </div>
@@ -195,6 +216,8 @@ import complaints from "@/components/complaints.vue";
 import deleteUser from "@/components/deleteUser.vue";
 import blockAccount from "@/components/blockAccount.vue";
 import unblockAccount from "@/components/unblockAccount.vue";
+import transaction from "@/components/transaction.vue";
+import otp from "@/components/otp.vue";
 
 export default {
   name: "dashboard",
@@ -214,7 +237,9 @@ export default {
     complaints,
     deleteUser,
     blockAccount,
-    unblockAccount
+    unblockAccount,
+    transaction,
+    otp
   },
   beforeCreate() {
     if (!this.$session.exists()) {
