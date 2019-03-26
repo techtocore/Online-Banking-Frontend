@@ -56,7 +56,8 @@ export default {
       account_no: "",
       msg: "",
       amount: "",
-      currentComponent: null
+      currentComponent: null,
+      flag: false
     };
   },
   methods: {
@@ -86,11 +87,11 @@ export default {
             response => {
               if (response.body.message) {
                 this.msg = response.body.message;
+                this.flag = true;
               } else {
                 this.msg = "There has been some error. Please try again later";
               }
               this.$modal.show("notifyLog");
-              setTimeout(this.swapComponent("otp"), 2000);
             },
             response => {
               if (response.body.error) {
@@ -105,6 +106,9 @@ export default {
     },
     clearMsg: function() {
       this.msg = "";
+      if (this.flag) {
+        this.swapComponent("otp");
+      }
     }
   }
 };

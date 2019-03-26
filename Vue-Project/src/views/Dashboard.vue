@@ -24,6 +24,11 @@
                 class="list-group-item list-group-item-action"
                 @click="switchTab('transaction')"
               >Send Money</button>
+              <button
+                type="button"
+                class="list-group-item list-group-item-action"
+                @click="switchTab('allTransactions')"
+              >All Transactions</button>
               <!-- <button
                 type="button"
                 class="list-group-item list-group-item-action"
@@ -92,6 +97,11 @@
                 class="list-group-item list-group-item-action active"
                 @click="switchTab('overview')"
               >Account Summary</button>
+              <button
+                type="button"
+                class="list-group-item list-group-item-action"
+                @click="switchTab('allTransactions')"
+              >All Transactions</button>
               <button
                 type="button"
                 class="list-group-item list-group-item-action"
@@ -191,6 +201,9 @@
           <div v-if="x=='otp'">
             <otp></otp>
           </div>
+          <div v-if="x=='allTransactions'">
+            <allTransactions></allTransactions>
+          </div>
         </div>
       </div>
     </div>
@@ -218,6 +231,7 @@ import blockAccount from "@/components/blockAccount.vue";
 import unblockAccount from "@/components/unblockAccount.vue";
 import transaction from "@/components/transaction.vue";
 import otp from "@/components/otp.vue";
+import allTransactions from "@/components/allTransactions.vue";
 
 export default {
   name: "dashboard",
@@ -239,7 +253,8 @@ export default {
     blockAccount,
     unblockAccount,
     transaction,
-    otp
+    otp,
+    allTransactions
   },
   beforeCreate() {
     if (!this.$session.exists()) {

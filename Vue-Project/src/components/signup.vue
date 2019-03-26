@@ -113,7 +113,8 @@ export default {
       address: "",
       govid: "",
       govt_id_type: "",
-      currentComponent: null
+      currentComponent: null,
+      flag: false
     };
   },
   methods: {
@@ -152,11 +153,11 @@ export default {
               this.govt_id = "";
               if (response.body.message) {
                 this.msg = response.body.message;
+                this.flag = true;
               } else {
                 this.msg = "There has been some error. Please try again later";
               }
               this.$modal.show("notifyLog");
-              setTimeout(this.swapComponent("login"), 2000);
             },
             response => {
               if (response.body.error) {
@@ -171,6 +172,9 @@ export default {
     },
     clearMsg: function() {
       this.msg = "";
+      if (this.flag) {
+        this.swapComponent("login");
+      }
     }
   }
 };
