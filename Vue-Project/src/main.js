@@ -6,6 +6,7 @@ import VModal from "vue-js-modal";
 import VueValidate from "vee-validate";
 import VueResource from "vue-resource";
 import store from "./store";
+import $ from "jquery";
 import "bootstrap";
 
 Vue.config.productionTip = false;
@@ -16,6 +17,7 @@ Vue.use(vueSession);
 Vue.use(VModal);
 Vue.use(VueResource);
 Vue.use(VueValidate);
+Vue.use($);
 
 window.$ = require("jquery");
 window.JQuery = require("jquery");

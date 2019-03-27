@@ -18,10 +18,10 @@
       <tbody>
         <tr v-for="item in tList" :key="item.id">
           <td>{{item.id}}</td>
-          <td><div v-if=" item.from_account_no != this.ac ">{{item.from_account_no}}</div></td>
-          <td><div v-if=" item.to_account_no != this.ac ">{{item.to_account_no}}</div></td>
-          <td><div v-if=" item.from_account_no === this.ac ">{{item.amount}}</div></td>
-          <td><div v-if=" item.to_account_no === this.ac ">{{item.amount}}</div></td>
+          <td><div v-if=" item.from_account_no != ac ">{{item.from_account_no}}</div></td>
+          <td><div v-if=" item.to_account_no != ac ">{{item.to_account_no}}</div></td>
+          <td><div v-if=" item.from_account_no === ac ">&#8377; {{item.amount}}</div></td>
+          <td><div v-if=" item.to_account_no === ac ">&#8377; {{item.amount}}</div></td>
           <td><div>{{item.updated_at}}</div></td>
         </tr>
       </tbody>

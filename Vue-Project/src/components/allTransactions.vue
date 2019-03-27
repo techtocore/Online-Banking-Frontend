@@ -19,7 +19,7 @@
           <td>{{item.id}}</td>
           <td>{{item.from_account_no}}</td>
           <td>{{item.to_account_no}}</td>
-          <td>{{item.amount}}</td>
+          <td>&#8377; {{item.amount}}</td>
           <td>{{item.updated_at}}</td>
         </tr>
       </tbody>

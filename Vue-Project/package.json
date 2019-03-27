@@ -1,7 +1,7 @@
 {
   "name": "PatronusBankingServices",
   "description": "UI for Online Banking Service",
-  "version": "0.2.0",
+  "version": "1.0.1",
   "author": "Akash Ravi <akashkravi@gmail.com>",
   "private": true,
   "scripts": {
@@ -25,7 +25,7 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.5.1",
     "@vue/cli-plugin-eslint": "^3.5.1",
-    "@vue/cli-service": "^3.5.1",
+    "@vue/cli-service": "^3.5.2",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.15.3",
     "eslint-plugin-vue": "^5.2.2",
@@ -34,7 +34,9 @@
   "eslintConfig": {
     "root": true,
     "env": {
-      "node": true
+      "browser": true,
+      "node": true,
+      "jquery": true
     },
     "extends": [
       "plugin:vue/essential",
